@@ -64,7 +64,7 @@ class Dictionary(object):
                     depend.add_phrase(input)
                 else:
                     self.pattern.append(
-                        patter
+                        pattern
                         )
         if not input in self.random:
             self.random.append(input)
