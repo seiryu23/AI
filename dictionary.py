@@ -22,6 +22,7 @@ class Dictionary(object):
             if (str != ''):
                 ramdomList.append(str)
         return ramdomList
+
     def makePatternDictionary(self):
         #ファイルを読み込み文字列をすべて取得
         pfile = open('dics/pattern.txt', 'r', encoding = 'utf_8')
@@ -35,12 +36,11 @@ class Dictionary(object):
             if (str != ''):
                 patternList.append(str)
         
-        patternDictionary = {}
+        patternItemList = []
         for pattern in patternList:
             ptn, prs = pattern.split('\t')
-            patternDictionary.setdefault('pattern', []).append(ptn)
-            patternDictionary.setdefault('phrases', []).append(prs)
-        return patternDictionary
+            patternItemList.append(patternItem.PatternItem(ptn, prs))
+        return patternItemList
 
     def study(self, input, parts):
         input = input.rstrip('\n')
@@ -53,7 +53,7 @@ class Dictionary(object):
 
     def study_pattern(self, input, parts):
         for word, part in parts:
-            if analyzer.keyword_check(parts):
+            if analyzer.keyword_check(part):
                 depend = None
                 for ptn_item in self.pattern:
                     if re.search(
@@ -68,8 +68,6 @@ class Dictionary(object):
                     self.pattern.append(
                         patternItem.PatternItem(word, input)
                         )
-        if not input in self.random:
-            self.random.append(input)
     
     def save(self):
         for index, element in enumerate(self.random):

@@ -13,5 +13,6 @@ def analyze(text):
     return(result)
 def keyword_check(part):
     return re.match(
-        '名詞,(一般|固有名詞|サ変接続|形容動詞語幹)', part
+        '名詞,(一般|固有名詞|サ変接続|形容動詞語幹)',
+        part
         )

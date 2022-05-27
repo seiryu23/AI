@@ -25,6 +25,7 @@ class PatternItem:
                 dic['need'] = int(m[0][1])
             dic['phrase'] = m[0][2]
             self.phrases.append(dic.copy())
+            
     def match(self, str):
         return re.search(self.pattern, str)
     

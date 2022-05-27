@@ -1,2 +1,14 @@
 System Dialogue Log: 2022-05-05/22/22 20:53::36
 System Dialogue Log: 2022-05-22 20:55::04
+System Dialogue Log: 2022-05-28 00:39::49
+> こんばんわ、上畑です
+msc_operator：Random> 怖っ
+> 初めまして
+msc_operator：Random> おっと？
+> 人間ですか？
+msc_operator：Random> ひぇ
+System Dialogue Log: 2022-05-28 00:50::36
+> こんばんわ
+msc_operator：Pattern> こんばんわ
+> 初めまして
+msc_operator：Pattern> 初めまして

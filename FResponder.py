@@ -64,7 +64,7 @@ class RandomResponder(FResponder):
     #-----------------------------------------------------
     # 戻値 ：文字列
     #-----------------------------------------------------
-    def response(self, input):
+    def response(self, input, mood):
         return (random.choice(self.responses))
 
 ##クラス##
@@ -73,14 +73,12 @@ class PatternResponder(FResponder):
         super().__init__(name)
         self.dictionary = dictionary
 
-    def response(self, input):
-        for ptn, prs in zip(
-            self.dictionary.pattern['pattern'],
-            self.dictionary.pattern['phrases']
-        ):
-        
-            m = re.search(ptn, input)
+    def response(self, input, mood):
+        resp = None
+        for ptn_item in self.dictionary.pattern:        
+            m = ptn_item.match(input)
             if m:
-                resp  = random.choice(prs.split('|'))
+                resp  = ptn_item.choice(mood)
+            if resp != None:
                 return re.sub('%match%', m.group(), resp)
         return random.choice(self.dictionary.random)
