@@ -1,4 +1,6 @@
+import imp
 import analyzer
+import patternItem
 import re
 
 #クラス
@@ -64,7 +66,7 @@ class Dictionary(object):
                     depend.add_phrase(input)
                 else:
                     self.pattern.append(
-                        pattern
+                        patternItem.PatternItem(word, input)
                         )
         if not input in self.random:
             self.random.append(input)
@@ -74,3 +76,9 @@ class Dictionary(object):
             self.random[index] = element + '\n'
         with open('dics/random.txt', 'w', encoding = 'utf_8') as f:
             f.writelines(self.random)
+        pattern = []
+
+        for ptn_item in self.pattern:
+            pattern.append(ptn_item.make_line() + '\n')
+        with open('dics/pattern.txt', 'w', encoding='utf_8') as f:
+            f.writelines(pattern)
